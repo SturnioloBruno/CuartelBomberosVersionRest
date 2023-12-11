@@ -24,6 +24,19 @@ public class CuartelService {
         return modelMapper.map(cuartelRepository.save(cuartel), CuartelDto.class);
     }
 
+    @Transactional
+    public CuartelDto update(Long id, CuartelDto cuartelDto) {
+        Cuartel cuartelExistente = cuartelRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Cuartel no encontrado con el ID: " + id));
+
+        // Actualizar manualmente los campos del cuartel existente con los valores del DTO
+        modelMapper.map(cuartelDto, cuartelExistente);
+
+        return modelMapper.map(cuartelRepository.save(cuartelExistente), CuartelDto.class);
+    }
+
+
+
     @Transactional(readOnly = true)
     public List<CuartelDto> listAll(){
         Iterable<Cuartel> cuarteles = cuartelRepository.findAll();
@@ -47,6 +60,10 @@ public class CuartelService {
     @Transactional
     public void delete(CuartelDto cuartelDto){
         cuartelRepository.delete(modelMapper.map(cuartelDto, Cuartel.class));
+    }
+
+    public boolean existsById(Long id){
+        return cuartelRepository.existsById(id);
     }
 
 }
