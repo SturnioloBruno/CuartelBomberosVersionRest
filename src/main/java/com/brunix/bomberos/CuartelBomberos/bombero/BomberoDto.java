@@ -10,23 +10,17 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-@Table(name = "bomberos")
-public class Bombero {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_bombero")
+public class BomberoDto {
+
     private Long id;
     private String dni;
-    @Column(name = "nombre_ape")
-    private String nombreYApellido;
-    @Column(name = "fecha_nac")
-    private Date fechaNac;
-    @ManyToOne()
-    @JoinColumn(name = "id_brigada", nullable = false)
-    private Brigada brigada;
 
+    private String nombreYApellido;
+
+    private Date fechaNac;
+
+    private Brigada brigada;
 }
