@@ -2,6 +2,7 @@ package com.brunix.bomberos.CuartelBomberos.brigada;
 
 import com.brunix.bomberos.CuartelBomberos.bombero.Bombero;
 import com.brunix.bomberos.CuartelBomberos.cuartel.Cuartel;
+import com.brunix.bomberos.CuartelBomberos.siniestro.Siniestro;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,4 +32,7 @@ public class Brigada {
     @OneToMany(mappedBy = "brigada")
     @JsonIgnore
     private Set<Bombero> bomberos;
+    @OneToMany(mappedBy = "brigadaResponsable")
+    @JsonIgnore
+    private Set<Siniestro> siniestrosAsignados;
 }
