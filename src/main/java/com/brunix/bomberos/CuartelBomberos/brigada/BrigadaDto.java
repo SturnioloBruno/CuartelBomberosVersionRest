@@ -1,6 +1,8 @@
 package com.brunix.bomberos.CuartelBomberos.brigada;
 
 import com.brunix.bomberos.CuartelBomberos.cuartel.Cuartel;
+import com.brunix.bomberos.CuartelBomberos.cuartel.CuartelDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,20 +10,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-@Table(name = "brigadas")
-public class Brigada {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_brigada")
+public class BrigadaDto {
+
     private Long id;
     private String nombre;
     private String especialidad;
     private Boolean libre;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cuartel")
-    private Cuartel cuartel;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private CuartelDto cuartelDto;
 }
