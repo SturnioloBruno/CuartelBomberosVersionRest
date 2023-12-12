@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -29,8 +30,8 @@ public class Cuartel {
     private int coordY;
     private String telefono;
     private String correo;
-    @OneToMany(mappedBy = "cuartel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cuartel")
     @JsonIgnore
-    private List<Brigada> brigadas = new ArrayList<>();
+    private Set<Brigada> brigadas;
 
 }

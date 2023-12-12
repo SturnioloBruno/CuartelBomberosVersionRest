@@ -26,7 +26,7 @@ public class BrigadaService {
     public BrigadaDto save(BrigadaDto brigadaDto) {
         Brigada brigada = modelMapper.map(brigadaDto, Brigada.class);
 
-        if (brigadaDto.getCuartelDto() != null) {
+       /* if (brigadaDto.getCuartelDto() != null) {
             Cuartel cuartel = modelMapper.map(brigadaDto.getCuartelDto(), Cuartel.class);
             cuartel = cuartelRepository.save(cuartel); // Guardar el Cuartel por separado
 
@@ -34,6 +34,8 @@ public class BrigadaService {
         }
 
         // Guardar la Brigada, asegurándote de que la referencia al Cuartel esté establecida
+        return modelMapper.map(brigadaRepository.save(brigada), BrigadaDto.class);*/
+
         return modelMapper.map(brigadaRepository.save(brigada), BrigadaDto.class);
     }
 

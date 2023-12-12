@@ -21,7 +21,7 @@ public class Brigada {
     private String nombre;
     private String especialidad;
     private Boolean libre;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cuartel")
+    @ManyToOne()
+    @JoinColumn(name = "id_cuartel", nullable = false)
     private Cuartel cuartel;
 }

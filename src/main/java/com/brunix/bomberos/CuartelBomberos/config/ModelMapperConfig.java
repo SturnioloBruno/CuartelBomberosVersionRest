@@ -16,11 +16,11 @@ public class ModelMapperConfig {
         ModelMapper modelMapper = new ModelMapper();
 
         // Configuración para ignorar el campo 'id' durante el mapeo de CuartelDto a Cuartel
-        modelMapper.typeMap(CuartelDto.class, Cuartel.class)
+        /*modelMapper.typeMap(CuartelDto.class, Cuartel.class)
                 .addMappings(mapper -> mapper.skip(Cuartel::setId));
 
         modelMapper.typeMap(BrigadaDto.class, Brigada.class)
-                .addMappings(mapper -> mapper.skip(Brigada::setId));
+                .addMappings(mapper -> mapper.skip(Brigada::setId));*/
 
         return modelMapper;
     }

@@ -33,6 +33,14 @@ public class CuartelService {
         modelMapper.map(cuartelDto, cuartelExistente);
 
         return modelMapper.map(cuartelRepository.save(cuartelExistente), CuartelDto.class);
+
+        // este metodo actualizar podria dejarle la responsabilidad al framework y dejarlo como:
+        /*
+        Cuartel cuartel = modelMapper.map(cuartelDto, Cuartel.class);
+        return modelMapper.map(cuartelRepository.save(cuartel), CuartelDto.class);
+        */
+        // esto lo que hace es fijarse en el body si le pongo un id, y el verbo es un Put, automaticamente hace un update
+
     }
 
 
